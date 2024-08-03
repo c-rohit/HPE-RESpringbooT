@@ -19,6 +19,6 @@ public class EmployeeController {
 
     @PostMapping
     public void addEmployee(@RequestBody Employee newEmployee) {
-        employeeManager.addEmployee(newEmployee);
+        employeeManager.getEmployees().getEmployeeList().add(newEmployee);
     }
 }
