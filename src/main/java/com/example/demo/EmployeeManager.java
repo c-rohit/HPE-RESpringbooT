@@ -2,7 +2,9 @@ package com.example.demo;
 
 import java.util.ArrayList;
 import java.util.List;
+import org.springframework.stereotype.Component;
 
+@Component
 public class EmployeeManager {
     private Employees employees;
 
@@ -17,5 +19,9 @@ public class EmployeeManager {
 
     public Employees getEmployees() {
         return employees;
+    }
+
+    public void addEmployee(Employee newEmployee) {
+        employees.getEmployeeList().add(newEmployee);
     }
 }

@@ -1,15 +1,24 @@
 package com.example.demo;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
+@RequestMapping("/employees")
 public class EmployeeController {
-    private EmployeeManager employeeManager = new EmployeeManager();
 
-    @GetMapping("/employees")
-    public Employees getAllEmployees() {
-        return employeeManager.getEmployees();
+    @Autowired
+    private EmployeeManager employeeManager;
+
+    @GetMapping
+    public List<Employee> getAllEmployees() {
+        return employeeManager.getEmployees().getEmployeeList();
+    }
+
+    @PostMapping
+    public void addEmployee(@RequestBody Employee newEmployee) {
+        employeeManager.addEmployee(newEmployee);
     }
 }
-
